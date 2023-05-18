@@ -16,6 +16,6 @@ public class Engine {
     }
 
     private void handlePlayerInput(){
-        ArrayList<Integer> keysPressed = window.getKeysPressed();
+        ArrayList<Integer> keysPressed = gameWindow.getKeysPressed();
     }
 }
