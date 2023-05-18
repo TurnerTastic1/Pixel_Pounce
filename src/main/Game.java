@@ -12,10 +12,7 @@ public class Game {
         gameWindow.requestFocus();
         engine = new Engine(gameWindow);
 
-
-
         player = new entities.Player();
-
     }
 
     public void start(){

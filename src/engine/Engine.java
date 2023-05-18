@@ -6,16 +6,16 @@ public class Engine {
     boolean start = true;
     private static GameWindow gameWindow;
     public Engine (GameWindow gameWindow){
-        this.gameWindow = gameWindow;
+        Engine.gameWindow = gameWindow;
     }
     public void runGame(){
         while(start) {
-            handlePlayerInupt();
+            this.handlePlayerInput();
             gameWindow.refresh();
         }
     }
 
-    private void handlePlayerInupt(){
-
+    private void handlePlayerInput(){
+        ArrayList<Integer> keysPressed = window.getKeysPressed();
     }
 }

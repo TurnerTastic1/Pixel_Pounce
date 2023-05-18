@@ -5,11 +5,15 @@ import inputs.GameMouseListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
+import java.util.*;
 
 public class GameWindow extends JComponent{
     private JFrame frame;
+    private GameKeyListener keyListener = new GameKeyListener();
+    private GameMouseListener mouseListener = new GameMouseListener();
+
     private HashMap<String, Image> loadedImages;
+
 
     public GameWindow() {
         initLogic();
@@ -30,10 +34,16 @@ public class GameWindow extends JComponent{
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        addKeyListener(new GameKeyListener());
-        addMouseListener(new GameMouseListener());
+        addKeyListener(keyListener);
+        addMouseListener(mouseListener);
     }
 
+
+    // * * Key handling * * //
+
+
+
+    // * * Image loading * * //
     public void refresh() {
         frame.repaint();
     }
