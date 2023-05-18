@@ -49,7 +49,7 @@ public class GameWindow extends JComponent{
     }
 
     private void drawEntities(Graphics g) {
-        System.out.println("Drawing entity: " + loadedImages.get("player"));
+//        System.out.println("Drawing entity: " + loadedImages.get("player"));
         g.drawImage(loadedImages.get("player"), 0, 0, 100, 100, null);
     }
 
