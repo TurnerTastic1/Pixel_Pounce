@@ -25,8 +25,8 @@ public class GameWindow extends JComponent{
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
-
         frame.add(this);
+
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
@@ -50,12 +50,12 @@ public class GameWindow extends JComponent{
 
     private void drawEntities(Graphics g) {
         System.out.println("Drawing entity: " + loadedImages.get("player"));
-        g.drawImage(loadedImages.get("player"), 0, 0, null);
+        g.drawImage(loadedImages.get("player"), 0, 0, 100, 100, null);
     }
 
     private void ensureImagesLoaded(){
         try {
-            String path = "sprites/player.png";
+            String path = "src/sprites/player.png";
             loadedImages.put("player", readImage(path));
         } catch (Exception e) {
             System.out.println("Error loading images: " + e);
@@ -64,7 +64,7 @@ public class GameWindow extends JComponent{
 
     public void preLoadImages() {
         try {
-            String path = "sprites/player.png";
+            String path = "src/sprites/player.png";
             loadedImages.put("player", new ImageIcon(path).getImage());
         } catch (Exception e) {
             System.out.println("Error pre-loading images");
