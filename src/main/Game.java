@@ -2,10 +2,13 @@ package main;
 
 public class Game {
     private GameWindow gameWindow;
-    private GamePanel gamePanel;
+    private entities.Player player;
     public Game() {
-        gamePanel = new GamePanel();
-        gameWindow = new GameWindow(gamePanel);
-        gamePanel.requestFocus();
+
+        gameWindow = new GameWindow();
+        gameWindow.requestFocus();
+
+        player = new entities.Player();
+
     }
 }

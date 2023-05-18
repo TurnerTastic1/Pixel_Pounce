@@ -7,4 +7,61 @@ public abstract class Entity {
     protected double x,y;
     private boolean isVisible;
 
+    public Entity(String imageName, int height, int width, double x, double y, boolean isVisible) {
+        this.imageName = imageName;
+        this.height = height;
+        this.width = width;
+        this.x = x;
+        this.y = y;
+        this.isVisible = isVisible;
+    }
+
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public double getX() {
+        return x;
+    }
+
+    public void setX(double x) {
+        this.x = x;
+    }
+
+    public double getY() {
+        return y;
+    }
+
+    public void setY(double y) {
+        this.y = y;
+    }
+
+    public boolean isVisible() {
+        return isVisible;
+    }
+
+    public void setVisible(boolean visible) {
+        isVisible = visible;
+    }
+
 }
