@@ -1,7 +1,7 @@
 package entities;
 
 public class Player extends Entity{
-    private static final String imgName = "src/sprites/player.png";
+    private static final String imgName = "resources/sprites/player.png";
     private static final int PLAYER_WIDTH = 8*5;
     private static final int PLAYER_HEIGHT = 15*5;
 

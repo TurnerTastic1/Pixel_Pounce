@@ -24,7 +24,7 @@ public class Game {
     public void initData() {
         displayList = new ArrayList<Entity>();
         player = new entities.Player();
-        slime = new entities.Enemy("src/sprites/Slime1.png");
+        slime = new entities.Enemy("resources/sprites/Slime1.png");
         displayList.add(player);
         displayList.add(slime);
     }
