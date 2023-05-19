@@ -51,7 +51,7 @@ public abstract class Engine {
             }
         }
 
-        System.out.println("Game Over");
+        System.out.println("Exiting game...");
     }
 
     private void handlePlayerInput(){
@@ -61,6 +61,11 @@ public abstract class Engine {
         }
         leftTrue = keysPressed.contains(LEFT_KEY);
         rightTrue = keysPressed.contains(RIGHT_KEY);
+    }
+
+    public void exitGame() {
+        gameWindow.dispose();
+        System.exit(0);
     }
 
     public abstract void handleKeyPress(Integer key);

@@ -31,5 +31,6 @@ public class Game {
 
     public void start() {
         engine.runGame();
+        engine.exitGame();
     }
 }
