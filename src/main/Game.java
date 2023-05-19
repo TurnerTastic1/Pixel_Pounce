@@ -1,14 +1,37 @@
 package main;
 
+import engine.Runner;
+
+import entities.*;
+
+import java.util.ArrayList;
+
 public class Game {
     private GameWindow gameWindow;
-    private entities.Player player;
-    public Game() {
+    private final Runner engine;
+    private Player player;
+    private Enemy slime;
 
-        gameWindow = new GameWindow();
+    private ArrayList<Entity> displayList;
+    public Game() {
+        initData();
+
+        gameWindow = new GameWindow(displayList);
         gameWindow.requestFocus();
 
-        player = new entities.Player();
+        engine = new Runner(gameWindow, player);
+    }
 
+    public void initData() {
+        displayList = new ArrayList<Entity>();
+        player = new entities.Player();
+        slime = new entities.Enemy("src/sprites/Slime1.png");
+
+        displayList.add(player);
+        displayList.add(slime);
+    }
+
+    public void start() {
+        engine.runGame();
     }
 }

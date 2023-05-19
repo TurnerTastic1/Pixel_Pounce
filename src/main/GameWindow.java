@@ -1,17 +1,25 @@
 package main;
 
+import entities.Entity;
 import inputs.GameKeyListener;
 import inputs.GameMouseListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
+import java.util.*;
 
 public class GameWindow extends JComponent{
     private JFrame frame;
-    private HashMap<String, Image> loadedImages;
+    private GameKeyListener keyListener = new GameKeyListener();
+    private GameMouseListener mouseListener = new GameMouseListener();
 
-    public GameWindow() {
+    private HashMap<String, Image> loadedImages;
+    private ArrayList<Entity> displayList;
+
+
+    public GameWindow(ArrayList<Entity> displayList) {
+        this.displayList = displayList;
+
         initLogic();
         initFrame();
     }
@@ -30,10 +38,18 @@ public class GameWindow extends JComponent{
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        addKeyListener(new GameKeyListener());
-        addMouseListener(new GameMouseListener());
+        addKeyListener(keyListener);
+        addMouseListener(mouseListener);
     }
 
+
+    // * * Key handling * * //
+    public ArrayList<Integer>  getKeysPressed(){
+        return keyListener.getKeysPressed();
+    }
+
+
+    // * * Image loading * * //
     public void refresh() {
         frame.repaint();
     }
@@ -49,17 +65,35 @@ public class GameWindow extends JComponent{
     }
 
     private void drawEntities(Graphics g) {
-        System.out.println("Drawing entity: " + loadedImages.get("player"));
-        g.drawImage(loadedImages.get("player"), 0, 0, 100, 100, null);
+        for (Entity entity : displayList) {
+            try {
+                Entity e = entity;
+                Image img = loadedImages.get(e.getImageName());
+                //Draw each entity per its image name, coordinates, and dimensions
+                g.drawImage(img, (int) e.getX(), (int) e.getY(), (int) e.getWidth(), (int) e.getHeight(), null);
+            } catch (RuntimeException re) {
+                //just in case... since students will be modifying the arraylist
+            }
+        }
     }
 
     private void ensureImagesLoaded(){
-        try {
-            String path = "src/sprites/player.png";
-            loadedImages.put("player", readImage(path));
-        } catch (Exception e) {
-            System.out.println("Error loading images: " + e);
+        for (Entity entity : displayList) {
+            try {
+                Entity e = entity;
+                String imageName = e.getImageName();
+                if (imageName != null && !loadedImages.containsKey(imageName))
+                    loadedImages.put(imageName, readImage(imageName));
+            } catch (RuntimeException re) {
+                //just in case... since students will be modifying the arraylist
+            }
         }
+//        try {
+//            String path = "src/sprites/player.png";
+//            loadedImages.put("player", readImage(path));
+//        } catch (Exception e) {
+//            System.out.println("Error loading images: " + e);
+//        }
     }
 
     public void preLoadImages() {
