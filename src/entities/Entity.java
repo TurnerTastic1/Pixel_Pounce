@@ -60,8 +60,19 @@ public abstract class Entity {
         return isVisible;
     }
 
+    /* semantics... set visible implies it will be visible? setVisibility? */
     public void setVisible(boolean visible) {
         isVisible = visible;
     }
 
+
+    /**
+     * Update the player positions and attributes, effects, etc
+     */
+    public abstract void update();
+
+    /**
+     * For the graphics?
+     */
+    public abstract void render();
 }

@@ -48,10 +48,14 @@ public class GameWindow extends JComponent{
         return keyListener.getKeysPressed();
     }
 
-
-    // * * Image loading * * //
+    // Refresh the window to show any updates to the game
     public void refresh() {
         frame.repaint();
+    }
+
+    // Dispose of the window when the game is over
+    public void dispose() {
+        frame.dispose();
     }
 
     public void paintComponent(Graphics g) {
@@ -77,6 +81,7 @@ public class GameWindow extends JComponent{
         }
     }
 
+    // * * Image loading * * //
     private void ensureImagesLoaded(){
         for (Entity entity : displayList) {
             try {
@@ -116,5 +121,4 @@ public class GameWindow extends JComponent{
 //        }
         return new ImageIcon(filename).getImage();
     }
-
 }
