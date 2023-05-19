@@ -11,7 +11,7 @@ public class Runner extends Engine{
     }
 
     protected boolean isGameOver() {
-        return false;
+        return player.getHp() <= 0;
     }
 
     @Override
@@ -20,6 +20,7 @@ public class Runner extends Engine{
             case UP_KEY -> moveUp();
             case RIGHT_KEY -> isRightTrue = true;
             case LEFT_KEY -> isLeftTrue = true;
+            case Q_KEY -> Player.setHp(0);
         }
     }
 

@@ -6,11 +6,12 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class GameKeyListener implements KeyListener {
-    private static final HashSet<Integer> movementKeys = new HashSet<Integer>(){{
+    private static final HashSet<Integer> gameKeys = new HashSet<Integer>(){{
         add(KeyEvent.VK_UP);
         add(KeyEvent.VK_DOWN);
         add(KeyEvent.VK_LEFT);
         add(KeyEvent.VK_RIGHT);
+        add(KeyEvent.VK_Q);
     }};
     private HashSet<Integer> keysCurrentlyPressed;
     private Boolean isFetchingKeys = false;
@@ -53,7 +54,7 @@ public class GameKeyListener implements KeyListener {
             //so they are not registered on subsequent checks by the game
             //Movement-specific keys remain in the Set to ensure smooth/reactive movement
             for (Integer key : currentPressCopy){
-                if (movementKeys.contains(key))
+                if (gameKeys.contains(key))
                     onlyMovementKeys.add(key);
             }
             keysCurrentlyPressed = onlyMovementKeys;

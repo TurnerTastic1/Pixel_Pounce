@@ -12,6 +12,7 @@ public abstract class Engine {
     public static final int LEFT_KEY = KeyEvent.VK_LEFT;// .... left
     public static final int RIGHT_KEY = KeyEvent.VK_RIGHT;// .... right
     public static final int SPACE_KEY = KeyEvent.VK_SPACE;// .... right
+    public static final int Q_KEY = KeyEvent.VK_Q;// .... right
     public static boolean leftTrue = false;
     public static boolean rightTrue = false;
     // A collection of all the movement keys
@@ -31,6 +32,7 @@ public abstract class Engine {
     }
     public void runGame() {
         boolean start = true;
+
         while(!isGameOver()) {
             this.handlePlayerInput();
             gameWindow.refresh();
@@ -41,6 +43,8 @@ public abstract class Engine {
                 e.printStackTrace();
             }
         }
+
+        System.out.println("Game Over");
     }
 
     private void handlePlayerInput(){
