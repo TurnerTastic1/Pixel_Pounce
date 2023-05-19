@@ -14,20 +14,24 @@ public class Runner extends Engine{
     public void handleKeyPress(Integer key) {
         switch (key) {
             case UP_KEY -> moveUp();
-            case RIGHT_KEY -> moveRight();
-            case LEFT_KEY -> moveLeft();
+            case RIGHT_KEY -> isRightTrue = true;
+            case LEFT_KEY -> isLeftTrue = true;
         }
     }
 
+
     public void moveRight() {
+
         player.setX(player.getX() + 20);
     }
 
     public void moveLeft() {
+
         player.setX(player.getX() - 20);
     }
 
     public void moveUp() {
+
         player.setY(player.getY() - 20);
     }
 }

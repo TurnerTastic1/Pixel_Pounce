@@ -19,7 +19,11 @@ public abstract class Engine {
 
     protected ArrayList<Entity> displayList;
 
+    public double velx=0;
+    public double vely=0;
+    public boolean isLeftTrue;
 
+    public boolean isRightTrue;
 
     private static GameWindow gameWindow;
     public Engine (GameWindow gameWindow){

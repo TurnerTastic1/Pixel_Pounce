@@ -11,7 +11,6 @@ public class Game {
     private final Runner engine;
     private Player player;
     private Enemy slime;
-
     private ArrayList<Entity> displayList;
     public Game() {
         initData();
@@ -26,7 +25,6 @@ public class Game {
         displayList = new ArrayList<Entity>();
         player = new entities.Player();
         slime = new entities.Enemy("src/sprites/Slime1.png");
-
         displayList.add(player);
         displayList.add(slime);
     }
