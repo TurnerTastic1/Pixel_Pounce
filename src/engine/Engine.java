@@ -1,6 +1,7 @@
 package engine;
 
 import entities.Entity;
+import entities.Player;
 import main.GameWindow;
 import java.awt.event.KeyEvent;
 
@@ -22,10 +23,6 @@ public abstract class Engine {
 
     public double velx=0;
     public double vely=0;
-    public boolean isLeftTrue;
-
-    public boolean isRightTrue;
-
     private static GameWindow gameWindow;
     public Engine (GameWindow gameWindow){
         Engine.gameWindow = gameWindow;
@@ -36,6 +33,16 @@ public abstract class Engine {
         while(!isGameOver()) {
             this.handlePlayerInput();
             gameWindow.refresh();
+            this.updateplayerX();
+            if (leftTrue == false && rightTrue == false) {
+                if (velx < 0) {
+                    velx = velx / 1.16;
+                }
+                if (velx > 0) {
+                    velx = velx / 1.16;
+                }
+            }
+
 
             try {
                 Thread.sleep(1000/60);
@@ -49,13 +56,14 @@ public abstract class Engine {
 
     private void handlePlayerInput(){
         ArrayList<Integer> keysPressed = gameWindow.getKeysPressed();
-
         for (Integer key : keysPressed) {
             this.handleKeyPress(key); // handle each key individually
         }
+        leftTrue = keysPressed.contains(LEFT_KEY);
+        rightTrue = keysPressed.contains(RIGHT_KEY);
     }
 
     public abstract void handleKeyPress(Integer key);
-
+    public abstract void updateplayerX();
     protected abstract boolean isGameOver();
 }
