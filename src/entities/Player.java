@@ -17,4 +17,14 @@ public class Player extends Entity{
         super(imgName, PLAYER_HEIGHT, PLAYER_WIDTH, PLAYER_X, PLAYER_Y, PLAYER_VISIBLE);
     }
 
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void render() {
+
+    }
+
 }

@@ -50,20 +50,5 @@ public abstract class Engine {
         }
     }
 
-    private void sleep(long nanosToSleep){
-        if (nanosToSleep <= 0)
-            return;
-        long start = System.nanoTime();
-        while (System.nanoTime() - start < nanosToSleep){
-            try {
-                Thread.sleep(0, 5000);
-            }
-            catch(Exception e) {
-                //shouldn't ever reach here, but try/catch is necessary due to
-                //Java's implementation of Thread.sleep function
-            }
-        }
-    }
-
     public abstract void handleKeyPress(Integer key);
 }
