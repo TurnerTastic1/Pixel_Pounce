@@ -31,9 +31,10 @@ public abstract class Engine {
     }
     public void runGame() {
         boolean start = true;
-        while(start) {
+        while(!isGameOver()) {
             this.handlePlayerInput();
             gameWindow.refresh();
+
             try {
                 Thread.sleep(1000/60);
             } catch (InterruptedException e) {
@@ -51,4 +52,6 @@ public abstract class Engine {
     }
 
     public abstract void handleKeyPress(Integer key);
+
+    protected abstract boolean isGameOver();
 }

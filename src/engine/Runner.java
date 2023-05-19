@@ -10,6 +10,10 @@ public class Runner extends Engine{
         this.player = player;
     }
 
+    protected boolean isGameOver() {
+        return false;
+    }
+
     @Override
     public void handleKeyPress(Integer key) {
         switch (key) {
