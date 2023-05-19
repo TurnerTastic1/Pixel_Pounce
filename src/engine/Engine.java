@@ -2,6 +2,8 @@ package engine;
 
 import main.GameWindow;
 
+import java.util.ArrayList;
+
 public class Engine {
     boolean start = true;
     private static GameWindow gameWindow;
@@ -17,5 +19,6 @@ public class Engine {
 
     private void handlePlayerInput(){
         ArrayList<Integer> keysPressed = gameWindow.getKeysPressed();
+        System.out.println(keysPressed);
     }
 }

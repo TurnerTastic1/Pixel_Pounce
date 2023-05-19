@@ -40,7 +40,9 @@ public class GameWindow extends JComponent{
 
 
     // * * Key handling * * //
-
+    public ArrayList<Integer>  getKeysPressed(){
+        return keyListener.getKeysPressed();
+    }
 
 
     // * * Image loading * * //

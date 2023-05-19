@@ -25,18 +25,15 @@ public class GameKeyListener implements KeyListener {
 
     @Override
     public void keyPressed(KeyEvent e) {
-        keysCurrentlyPressed.add(e.getKeyCode());
-        switch (e.getKeyCode()) {
-            case KeyEvent.VK_UP -> System.out.println("Up pressed");
-            case KeyEvent.VK_DOWN -> System.out.println("Down pressed");
-            case KeyEvent.VK_LEFT -> System.out.println("Left pressed");
-            case KeyEvent.VK_RIGHT -> System.out.println("Right pressed");
+        while (isFetchingKeys){
+            sleep(100);
         }
+        keysCurrentlyPressed.add(e.getKeyCode());
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
-
+        keysCurrentlyPressed.remove(e.getKeyCode());
     }
 
     @Override
@@ -62,10 +59,25 @@ public class GameKeyListener implements KeyListener {
             keysCurrentlyPressed = onlyMovementKeys;
             return toReturn;
         }
-        catch(RuntimeException re){
+        catch(RuntimeException re) {
             //just in case we get a one-in-a-million race condition between retrieving/fetching keys
-            isFetchingKeys=false;
+            isFetchingKeys = false;
             return new ArrayList<Integer>();
+        }
+    }
+
+    private void sleep(long nanosToSleep){
+        if (nanosToSleep <= 0)
+            return;
+        long start = System.nanoTime();
+        while (System.nanoTime() - start < nanosToSleep){
+            try {
+                Thread.sleep(0, 5000);
+            }
+            catch(Exception e) {
+                //shouldn't ever reach here, but try/catch is necessary due to
+                //Java's implementation of Thread.sleep function
+            }
         }
     }
 }
